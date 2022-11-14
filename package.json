@@ -1,0 +1,13 @@
+{
+  "name": "rename-script",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "rename": "tsx ./rename.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "tsx": "^3.12.1"
+  },
+  "author": "fwio"
+}
