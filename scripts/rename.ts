@@ -3,19 +3,11 @@ import { normalize } from 'node:path'
 import { argv } from 'node:process'
 import { performance } from 'node:perf_hooks'
 
-const options = parseArgv(argv)
-
-//console.log(options)
-
-const files = await getCurrentFilenames(options.dir)
-
-postfixAll(options.dir, files as string[], options.postfix)
-
-//renameSync()
-
 interface CLIArgs {
   [key: string]: string
 }
+
+renameFiles()
 
 // i.e. tsx rename.ts --dir ../foo/bar/ --postfix -c
 function parseArgv(argv: string[]) {
@@ -54,10 +46,22 @@ async function postfixAll(dir: string, files: string[], postfix: string) {
     const oldPath = normalize(`${dir}/${file}`),
       newPath = normalize(`${dir}/${name}${postfix}.${ext.join('')}`)
 
-    await rename(oldPath, newPath)
+    try {
+      await rename(oldPath, newPath)
+    } catch(e) {
+      console.log(e)
+    }
   })
 
   const end = performance.now(),
     duration = (end - start) / 1000
   console.log(`Renamed totally ${files.length} files in ${duration} s.\n`)
+}
+
+async function renameFiles() {
+  const options = parseArgv(argv)
+
+  const files = await getCurrentFilenames(options.dir)
+
+  await postfixAll(options.dir, files as string[], options.postfix)
 }
