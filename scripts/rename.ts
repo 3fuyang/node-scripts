@@ -50,9 +50,9 @@ async function postfixAll(dir: string, files: string[], postfix: string) {
   const start = performance.now()
 
   files.forEach(async file => {
-    const [name, ext] = file.split('.')
+    const [name, ...ext] = file.split('.')
     const oldPath = normalize(`${dir}/${file}`),
-      newPath = normalize(`${dir}/${name}${postfix}.${ext}`)
+      newPath = normalize(`${dir}/${name}${postfix}.${ext.join('')}`)
 
     await rename(oldPath, newPath)
   })
