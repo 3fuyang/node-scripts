@@ -5,7 +5,7 @@ import { performance } from 'node:perf_hooks'
 
 const options = parseArgv(argv)
 
-console.log(options)
+//console.log(options)
 
 const files = await getCurrentFilenames(options.dir)
 
@@ -59,5 +59,5 @@ async function postfixAll(dir: string, files: string[], postfix: string) {
 
   const end = performance.now(),
     duration = (end - start) / 1000
-  console.log(`Totally ${files.length} files renamed in ${duration} s.\n`)
+  console.log(`Renamed totally ${files.length} files in ${duration} s.\n`)
 }

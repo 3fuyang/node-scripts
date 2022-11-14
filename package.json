@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "rename": "tsx ./rename.ts"
+    "rename": "tsx ./scripts/rename.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",

@@ -6,7 +6,7 @@
     /* Modules */
     "module": "esnext",                                /* Specify what module code is generated. */
     "include": [
-      "./**/*.ts"
+      "src/**/*.ts"
     ],
     "exclude": [
       "node_modules"
